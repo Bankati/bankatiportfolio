@@ -2,13 +2,11 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { FaFacebookF, FaInstagram, FaLinkedinIn, FaGithub } from "react-icons/fa";
+import { FaLinkedinIn, FaGithub } from "react-icons/fa";
 import { profile, stats } from "@/lib/data";
 import AnimatedCounter from "./AnimatedCounter";
 
 const socials = [
-  { icon: FaFacebookF, href: "#" },
-  { icon: FaInstagram, href: "#" },
   { icon: FaLinkedinIn, href: profile.linkedin },
   { icon: FaGithub, href: profile.github },
 ];
@@ -32,7 +30,7 @@ export default function Hero() {
             transition={{ duration: 0.6 }}
             className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-[var(--accent)] mb-4"
           >
-            Bienvenue dans mon univers
+            {profile.eyebrow}
           </motion.span>
 
           <motion.h1

@@ -19,8 +19,8 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    const sections = navLinks
-      .map((l) => document.querySelector(l.href))
+    const sections = [...navLinks.map((l) => l.href), "#contact"]
+      .map((href) => document.querySelector(href))
       .filter((el): el is Element => Boolean(el));
 
     const observer = new IntersectionObserver(
@@ -62,7 +62,7 @@ export default function Navbar() {
           MB<span className="text-[var(--accent)]">.</span>
         </a>
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-7">
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -95,7 +95,7 @@ export default function Navbar() {
             e.preventDefault();
             handleClick("#contact");
           }}
-          className="hidden md:inline-flex items-center rounded-full bg-[var(--accent)] text-white text-sm font-semibold px-6 py-2.5 hover:bg-[var(--accent-dark)] transition-colors"
+          className="hidden lg:inline-flex items-center rounded-full bg-[var(--accent)] text-white text-sm font-semibold px-6 py-2.5 hover:bg-[var(--accent-dark)] transition-colors"
         >
           Me contacter
         </a>
@@ -103,7 +103,7 @@ export default function Navbar() {
         <button
           aria-label="Menu"
           onClick={() => setOpen((v) => !v)}
-          className="md:hidden relative w-9 h-9 flex flex-col items-center justify-center gap-1.5"
+          className="lg:hidden relative w-9 h-9 flex flex-col items-center justify-center gap-1.5"
         >
           <motion.span
             animate={{ rotate: open ? 45 : 0, y: open ? 6 : 0 }}
@@ -126,7 +126,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden overflow-hidden bg-white shadow-md mx-4 rounded-2xl mb-3"
+            className="lg:hidden overflow-hidden bg-white shadow-md mx-4 rounded-2xl mb-3"
           >
             <div className="flex flex-col p-3">
               {navLinks.map((link) => (

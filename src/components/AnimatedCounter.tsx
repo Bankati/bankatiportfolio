@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { useInView, useMotionValue, useSpring } from "framer-motion";
+import { useEffect, useState } from "react";
+import { animate, useReducedMotion } from "framer-motion";
 
 export default function AnimatedCounter({
   value,
@@ -10,25 +10,27 @@ export default function AnimatedCounter({
   value: number;
   suffix?: string;
 }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const motionValue = useMotionValue(0);
-  const springValue = useSpring(motionValue, { damping: 30, stiffness: 90 });
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  // Rendered on the server and on first paint: always the real, final value
+  // (correct even without JS). The effect below then runs a deterministic
+  // tween from 0 up to it — not a race against scroll position or an
+  // IntersectionObserver, both of which can leave the number stuck at 0.
+  const [display, setDisplay] = useState(value);
+  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
-    if (isInView) {
-      motionValue.set(value);
-    }
-  }, [isInView, motionValue, value]);
-
-  useEffect(() => {
-    const unsubscribe = springValue.on("change", (latest) => {
-      if (ref.current) {
-        ref.current.textContent = Math.round(latest).toString() + suffix;
-      }
+    const controls = animate(0, value, {
+      duration: reduceMotion ? 0 : 1.4,
+      ease: [0.22, 1, 0.36, 1],
+      onUpdate: (latest) => setDisplay(Math.round(latest)),
     });
-    return unsubscribe;
-  }, [springValue, suffix]);
 
-  return <span ref={ref}>0{suffix}</span>;
+    return () => controls.stop();
+  }, [value, reduceMotion]);
+
+  return (
+    <span>
+      {display.toLocaleString("fr-FR")}
+      {suffix}
+    </span>
+  );
 }

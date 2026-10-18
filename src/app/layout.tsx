@@ -9,9 +9,9 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Mabibè Bankati | Data Analyst & Data Scientist",
+  title: "Mabibè Bankati | Data, Développement & Cloud",
   description:
-    "Portfolio de Mabibè Bankati, Data Analyst & Data Scientiste — analyse de données, tableaux de bord, SQL, Power BI, Python.",
+    "Portfolio de Mabibè Bankati — projets data, expériences, compétitions et certifications. Analyse de données, SQL, Power BI, Python.",
 };
 
 export default function RootLayout({

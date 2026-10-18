@@ -1,69 +1,87 @@
-import { FaChartLine, FaDatabase, FaBrain, FaCloud } from "react-icons/fa";
+import { FaChartLine, FaDatabase, FaBrain, FaCloud, FaCode } from "react-icons/fa";
+import Chapter from "./Chapter";
 import Reveal from "./Reveal";
-import { skills } from "@/lib/data";
+import { skills, projects, certifications } from "@/lib/data";
+import { techIcons } from "@/lib/techIcons";
 
 const icons = {
   chart: FaChartLine,
   database: FaDatabase,
   brain: FaBrain,
   cloud: FaCloud,
+  code: FaCode,
 };
 
-const allTags = Array.from(new Set(skills.flatMap((s) => s.tags)));
+/** Nombre de projets et de certifications qui mettent en œuvre explicitement cette technologie. */
+function proofs(tag: string) {
+  const t = tag.toLowerCase();
+  const inProjects = projects.filter((p) => p.tech.some((x) => x.toLowerCase().includes(t)));
+  const inCerts = certifications.filter(
+    (c) =>
+      c.title.toLowerCase().includes(t) || c.topics?.some((topic) => topic.toLowerCase() === t)
+  );
+  return { projects: inProjects.length, certs: inCerts.length };
+}
 
 export default function Skills() {
   return (
-    <section id="skills" className="relative py-24 px-6">
-      <div className="max-w-6xl mx-auto">
-        <Reveal>
-          <span className="block text-center text-xs font-semibold tracking-[0.2em] uppercase text-[var(--accent)] mb-3">
-            Compétences
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-16 text-[#171522]">
-            Ce que je fais
-          </h2>
-        </Reveal>
-
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {skills.map((skill, i) => {
-            const Icon = icons[skill.icon as keyof typeof icons];
-            return (
-              <Reveal key={skill.title} delay={i * 0.08}>
-                <div className="card rounded-2xl p-6 h-full hover:-translate-y-1.5 transition-transform duration-300">
-                  <div className="w-12 h-12 rounded-xl bg-[var(--accent)]/10 text-[var(--accent)] flex items-center justify-center mb-5">
+    <Chapter
+      id="skills"
+      number="03"
+      kicker="Les technologies"
+      title="Ce que je maîtrise, et où je l'ai prouvé"
+      intro="Le chiffre à côté d'une technologie indique combien de projets ou de certifications de ce portfolio la mettent en œuvre. Sans chiffre, elle fait partie de mon socle d'apprentissage."
+    >
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {skills.map((skill, i) => {
+          const Icon = icons[skill.icon as keyof typeof icons];
+          return (
+            <Reveal key={skill.title} delay={i * 0.08}>
+              <div className="card rounded-2xl p-6 h-full">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-12 h-12 shrink-0 rounded-xl bg-[var(--accent)]/10 text-[var(--accent)] flex items-center justify-center">
                     <Icon size={20} />
                   </div>
-                  <h3 className="font-semibold text-[#171522] mb-2">{skill.title}</h3>
-                  <p className="text-sm text-[#171522]/55 leading-relaxed mb-4">{skill.desc}</p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {skill.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-[11px] px-2.5 py-1 rounded-full bg-[#171522]/[0.04] text-[#171522]/60"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                  <h3 className="font-semibold text-[#171522]">{skill.title}</h3>
                 </div>
-              </Reveal>
-            );
-          })}
-        </div>
+                <p className="text-sm text-[#171522]/55 leading-relaxed mb-5">{skill.desc}</p>
+                <ul className="flex flex-wrap gap-2">
+                  {skill.tags.map((tag) => {
+                    const p = proofs(tag);
+                    const total = p.projects + p.certs;
+                    const TagIcon = techIcons[tag];
+                    const detail = [
+                      p.projects > 0 && `${p.projects} projet${p.projects > 1 ? "s" : ""}`,
+                      p.certs > 0 && `${p.certs} certification${p.certs > 1 ? "s" : ""}`,
+                    ]
+                      .filter(Boolean)
+                      .join(" · ");
+                    return (
+                      <li
+                        key={tag}
+                        title={detail || undefined}
+                        className={`text-xs pl-2.5 py-1 rounded-full flex items-center gap-1.5 ${
+                          total > 0
+                            ? "bg-[var(--accent)]/10 text-[#171522] font-medium pr-1"
+                            : "bg-[#171522]/[0.04] text-[#171522]/55 pr-3"
+                        }`}
+                      >
+                        {TagIcon && <TagIcon size={12} className="shrink-0 opacity-80" />}
+                        {tag}
+                        {total > 0 && (
+                          <span className="min-w-5 h-5 px-1.5 rounded-full bg-[var(--accent)] text-white text-[10px] flex items-center justify-center">
+                            {total}
+                          </span>
+                        )}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            </Reveal>
+          );
+        })}
       </div>
-
-      <div className="relative overflow-hidden py-4 [mask-image:linear-gradient(90deg,transparent,black_10%,black_90%,transparent)]">
-        <div className="flex gap-4 w-max marquee-track">
-          {[...allTags, ...allTags].map((tag, i) => (
-            <span
-              key={tag + i}
-              className="text-sm px-5 py-2 rounded-full card text-[#171522]/50 whitespace-nowrap"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-      </div>
-    </section>
+    </Chapter>
   );
 }
