@@ -333,6 +333,33 @@ export const professional: Experience[] = [
       "Téléconseiller",
     ],
   },
+  {
+    image: "/images/yas-togo.png",
+    title: "Yas Togo",
+    subtitle: "Développeur Back-End — Stage",
+    period: "Septembre 2025 — Novembre 2025 (3 mois) · Lomé",
+    items: [
+      "Développement et déploiement d'applications backend avec Node.js et TypeScript",
+      "Gestion du cycle de vie complet d'un projet, du développement au déploiement",
+      "Tests et validation des API avec Postman",
+      "Mise en œuvre de bonnes pratiques de qualité de code via des outils d'analyse statique (SonarQube)",
+      "Collaboration en équipe pour concevoir, développer, tester et déployer des solutions technologiques opérationnelles",
+    ],
+    stack: ["Node.js", "TypeScript", "Postman", "SonarQube"],
+  },
+  {
+    image: "/images/facam-stairway.png",
+    title: "FACAM Stairway",
+    subtitle: "Data Scientist & Software Engineer",
+    period: "Décembre 2025 — Aujourd'hui · Lomé, Baguida (hybride)",
+    items: [
+      "Conception et développement d'applications web full-stack de bout en bout, systèmes backend et API inclus",
+      "Exploitation de techniques de data science et de business intelligence pour orienter les décisions",
+      "Déploiement et gestion d'infrastructure cloud sur AWS, en garantissant fiabilité, sécurité et scalabilité",
+      "Contribution sur l'ensemble du cycle de vie des projets, de la conception de l'architecture au déploiement en production",
+    ],
+    stack: ["AWS", "Full-Stack", "Data Science", "Business Intelligence", "DevOps"],
+  },
 ];
 
 /* ------------------------------------------------------------------ */
