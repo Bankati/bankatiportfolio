@@ -296,7 +296,7 @@ export const academics = [
     text: "J'ai fait mon collège et mon lycée dans cet établissement et j'ai adoré cette période de ma vie.",
   },
   {
-    image: "/images/lbs.jpeg",
+    image: "/images/lbs-logo.png",
     title: "Lomé Business School",
     text: "J'ai passé 3 ans dans cette université en système d'information, une formation qui m'a permis de développer mes compétences en analyse de données. J'y ai obtenu ma Licence, avec pour sujet de mémoire l'optimisation du recrutement universitaire : conception et réalisation d'une plateforme web de prospection centralisée augmentée par IA (RAG).",
   },
@@ -325,7 +325,7 @@ export const professional: Experience[] = [
     ],
   },
   {
-    image: "/images/lbs.jpeg",
+    image: "/images/lbs-logo.png",
     title: "Lomé Business School",
     subtitle: "Gestion de données & Téléconseil",
     items: [
