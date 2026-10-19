@@ -161,8 +161,9 @@ export const projects: Project[] = [
     hosting: "Conteneurisé avec Docker",
     tech: ["FastAPI", "Scikit-learn", "Pandas", "Joblib", "Docker", "Uvicorn"],
     result:
-      "API avec endpoints /health et /predict, documentation interactive générée automatiquement (Swagger), modèle et préprocesseur sérialisés (joblib) et rechargés par l'API — architecture prête pour un déploiement en production.",
+      "API déployée en production (Render, conteneur Docker) avec endpoints /health et /predict, documentation interactive Swagger accessible en ligne, modèle et préprocesseur sérialisés (joblib) et rechargés au démarrage.",
     link: "https://github.com/Bankati/customer-segmentation-clustering-api",
+    demo: "https://customer-segmentation-clustering-api.onrender.com/docs",
   },
   {
     image: "/images/project-ds-09-fraud-detection.png",
@@ -174,8 +175,9 @@ export const projects: Project[] = [
     language: "Python",
     tech: ["Scikit-learn", "Pandas", "NumPy", "Matplotlib", "Seaborn", "Streamlit", "Joblib"],
     result:
-      "Pipeline Scikit-Learn (normalisation + encodage + Régression Logistique à classes pondérées) atteignant 94 % de recall sur les fraudes, contre moins de 0,2 % pour le système existant — soit une amélioration d'environ 500x sur le taux de détection réel. Déployé en application Streamlit pour une prédiction en temps réel.",
+      "Pipeline Scikit-Learn (normalisation + encodage + Régression Logistique à classes pondérées) atteignant 94 % de recall sur les fraudes, contre moins de 0,2 % pour le système existant — soit une amélioration d'environ 500x sur le taux de détection réel. Application Streamlit déployée en production (Render, Docker) pour une prédiction en temps réel.",
     link: "https://github.com/Bankati/fraud-detection-paysim",
+    demo: "https://fraud-detection-paysim.onrender.com",
   },
   {
     image: "/images/project-warah.png",
