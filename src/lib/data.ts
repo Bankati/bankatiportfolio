@@ -353,12 +353,15 @@ export const professional: Experience[] = [
     subtitle: "Data Scientist & Software Engineer",
     period: "Décembre 2025 — Aujourd'hui · Lomé, Baguida (hybride)",
     items: [
-      "Conception et développement d'applications web full-stack de bout en bout, systèmes backend et API inclus",
-      "Exploitation de techniques de data science et de business intelligence pour orienter les décisions",
-      "Déploiement et gestion d'infrastructure cloud sur AWS, en garantissant fiabilité, sécurité et scalabilité",
-      "Contribution sur l'ensemble du cycle de vie des projets, de la conception de l'architecture au déploiement en production",
+      "Conception et déploiement d'une politique de gouvernance des données : conventions de nommage, nomenclature des matières premières et guide des bonnes pratiques, pour rendre fiables les données partagées entre équipes",
+      "Collecte de données terrain et recueil des besoins auprès des équipes opérationnelles",
+      "Analyse quotidienne des données sous Excel pour produire des indicateurs de suivi et appuyer les décisions",
+      "Utilisation de techniques de data science et de business intelligence pour orienter les choix stratégiques",
+      "Conception et développement d'applications web full-stack de bout en bout, backend et API compris",
+      "Déploiement et gestion d'infrastructure cloud sur AWS, avec une attention à la fiabilité, à la sécurité et à la montée en charge",
+      "Participation à tout le cycle de vie des projets, de la conception de l'architecture à la mise en production",
     ],
-    stack: ["AWS", "Full-Stack", "Data Science", "Business Intelligence", "DevOps"],
+    stack: ["Next.js", "NestJS", "Docker", "GitHub", "CI/CD", "AWS (S3)", "Supabase", "Postman"],
   },
 ];
 
