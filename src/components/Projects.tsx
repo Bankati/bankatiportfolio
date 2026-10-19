@@ -8,7 +8,8 @@ import Chapter from "./Chapter";
 import { projects, domains, type DomainId } from "@/lib/data";
 import { techIcons } from "@/lib/techIcons";
 
-function primaryLink(link: string) {
+function primaryLink(link: string | undefined) {
+  if (!link) return null;
   if (link.endsWith(".pdf")) return { label: "Lire le rapport (PDF)", Icon: FaFilePdf };
   if (link.includes("github.com")) return { label: "Voir le code", Icon: FaGithub };
   return { label: "Voir le projet", Icon: FaExternalLinkAlt };
@@ -60,7 +61,7 @@ export default function Projects() {
         <AnimatePresence mode="popLayout">
           {visible.map((project) => {
             const isOpen = openTitle === project.title;
-            const { label, Icon } = primaryLink(project.link);
+            const linkMeta = primaryLink(project.link);
             const domainLabel = domains.find((d) => d.id === project.domain)?.label;
             return (
               <motion.article
@@ -191,20 +192,26 @@ export default function Projects() {
                           <p className="text-white/60 leading-relaxed">{project.result}</p>
                         </div>
                         <div className="flex flex-wrap gap-3">
-                          <a
-                            href={project.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 text-sm font-medium px-5 py-2.5 rounded-full bg-[var(--accent)] text-white hover:bg-[var(--accent-dark)] transition-colors"
-                          >
-                            <Icon /> {label}
-                          </a>
+                          {linkMeta && (
+                            <a
+                              href={project.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-2 text-sm font-medium px-5 py-2.5 rounded-full bg-[var(--accent)] text-white hover:bg-[var(--accent-dark)] transition-colors"
+                            >
+                              <linkMeta.Icon /> {linkMeta.label}
+                            </a>
+                          )}
                           {project.demo && (
                             <a
                               href={project.demo}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="inline-flex items-center gap-2 text-sm font-medium px-5 py-2.5 rounded-full border border-white/20 text-white hover:bg-white/10 transition-colors"
+                              className={`inline-flex items-center gap-2 text-sm font-medium px-5 py-2.5 rounded-full transition-colors ${
+                                linkMeta
+                                  ? "border border-white/20 text-white hover:bg-white/10"
+                                  : "bg-[var(--accent)] text-white hover:bg-[var(--accent-dark)]"
+                              }`}
                             >
                               <FaExternalLinkAlt size={12} /> Démonstration
                             </a>

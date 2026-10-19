@@ -51,8 +51,8 @@ export type Project = {
   hosting?: string;
   tech: string[];
   result: string;
-  /** Code source, rapport ou démonstration principale */
-  link: string;
+  /** Code source ou rapport. Omis quand le code n'est pas public (projet client confidentiel). */
+  link?: string;
   /** Application déployée (optionnel) */
   demo?: string;
 };
@@ -192,7 +192,6 @@ export const projects: Project[] = [
     tech: ["Next.js", "NestJS", "Prisma", "Supabase", "PayDunya (Mobile Money)", "Resend", "Sentry", "Docker"],
     result:
       "Plateforme en production : les propriétaires suivent leurs biens, leurs baux et leur historique de paiement, et encaissent les loyers via T-Money, Flooz et Mixx by Yas.",
-    link: "https://github.com/Bankati/DINAWA",
     demo: "https://www.warahcontact.com",
   },
   {
