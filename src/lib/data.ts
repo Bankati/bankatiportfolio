@@ -1,5 +1,5 @@
 export const profile = {
-  role: "Data Analyst | Data Scientiste",
+  role: "Data Analyst | Data Scientiste | Software Developer",
   eyebrow: "Data · Développement · Cloud",
   quote:
     "Avec les données, on peut toujours améliorer l'existant ; il suffit de savoir mieux les analyser.",
