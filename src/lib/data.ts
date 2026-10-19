@@ -298,7 +298,7 @@ export const academics = [
   {
     image: "/images/lbs.jpeg",
     title: "Lomé Business School",
-    text: "J'ai passé 3 ans dans cette université en système d'information, une formation qui m'a permis de développer mes compétences en analyse de données.",
+    text: "J'ai passé 3 ans dans cette université en système d'information, une formation qui m'a permis de développer mes compétences en analyse de données. J'y ai obtenu ma Licence, avec pour sujet de mémoire l'optimisation du recrutement universitaire : conception et réalisation d'une plateforme web de prospection centralisée augmentée par IA (RAG).",
   },
 ];
 
