@@ -151,6 +151,33 @@ export const projects: Project[] = [
     link: "https://github.com/Bankati/clustering-client-rfm-kmeans",
   },
   {
+    image: "/images/project-ds-08-clustering-api.png",
+    domain: "datascience",
+    category: "Clustering & API",
+    title: "Customer Segmentation — Clustering API",
+    context:
+      "Industrialisation d'une segmentation client par K-Means : passage d'une exploration notebook à une API FastAPI conteneurisée avec Docker. L'API reçoit la fiche brute d'un client et retourne le cluster prédit ainsi que son persona, en appliquant le même pipeline de prétraitement (feature engineering) qu'à l'entraînement, sans risque de décalage entre les deux.",
+    language: "Python",
+    hosting: "Conteneurisé avec Docker",
+    tech: ["FastAPI", "Scikit-learn", "Pandas", "Joblib", "Docker", "Uvicorn"],
+    result:
+      "API avec endpoints /health et /predict, documentation interactive générée automatiquement (Swagger), modèle et préprocesseur sérialisés (joblib) et rechargés par l'API — architecture prête pour un déploiement en production.",
+    link: "https://github.com/Bankati/customer-segmentation-clustering-api",
+  },
+  {
+    image: "/images/project-ds-09-fraud-detection.png",
+    domain: "datascience",
+    category: "Machine Learning",
+    title: "Détection de fraude — PaySim",
+    context:
+      "Pipeline Machine Learning de bout en bout pour détecter les transactions frauduleuses dans un système de paiement mobile (dataset PaySim, inspiré de transactions M-Pesa) : 6,36 millions de transactions, avec seulement 0,13 % de fraudes. Le système de règles existant du dataset ne détectait que 16 fraudes sur 8 213 réelles (moins de 0,2 %).",
+    language: "Python",
+    tech: ["Scikit-learn", "Pandas", "NumPy", "Matplotlib", "Seaborn", "Streamlit", "Joblib"],
+    result:
+      "Pipeline Scikit-Learn (normalisation + encodage + Régression Logistique à classes pondérées) atteignant 94 % de recall sur les fraudes, contre moins de 0,2 % pour le système existant — soit une amélioration d'environ 500x sur le taux de détection réel. Déployé en application Streamlit pour une prédiction en temps réel.",
+    link: "https://github.com/Bankati/fraud-detection-paysim",
+  },
+  {
     image: "/images/project-warah.png",
     domain: "web",
     category: "SaaS B2B",
